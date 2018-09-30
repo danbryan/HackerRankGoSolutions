@@ -13,9 +13,7 @@ import (
  * Complete the timeConversion function below.
  */
 func timeConversion(s string) string {
-	/*
-	 * Write your code here.
-	 */
+
 	timeslice := strings.Split(s, ":")
 
 	hh := timeslice[0]
@@ -25,16 +23,21 @@ func timeConversion(s string) string {
 	if strings.Contains(ss, "PM") {
 		ssslice := strings.Split(ss, "PM")
 		ss = ssslice[0]
-		mhh, _ := strconv.Atoi(hh)
-		mhh += 12
-		hh = strconv.Itoa(mhh)
+		if hh != "12" {
+			mhh, _ := strconv.Atoi(hh)
+			mhh += 12
+			hh = strconv.Itoa(mhh)
+		}
 	} else if strings.Contains(ss, "AM") {
 		ssslice := strings.Split(ss, "AM")
 		ss = ssslice[0]
+		if hh == "12" {
+			hh = "00"
+		}
 	}
 
 	miltime := hh + ":" + mm + ":" + ss
-	// fmt.Println(miltime)
+	fmt.Println("MT: ", miltime)
 	return miltime
 }
 
