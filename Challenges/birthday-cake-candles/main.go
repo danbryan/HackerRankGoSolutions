@@ -18,7 +18,6 @@ func birthdayCakeCandles(ar []int32) int32 {
 			matches++
 		}
 	}
-	fmt.Println(matches)
 	return matches
 }
 
